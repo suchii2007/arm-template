@@ -1,0 +1,27 @@
+name: Deploy VNet ARM Template
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Azure Login
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy ARM Template to Resource Group
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: "932386c3-4cfa-44ad-8ecf-82ba0e98882e"
+        resourceGroupName: "RG-Linux-DR"
+        template: ./vnet.json
+        deploymentName: VnetDeployment
