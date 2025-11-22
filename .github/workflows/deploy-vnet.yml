@@ -22,6 +22,6 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: "932386c3-4cfa-44ad-8ecf-82ba0e98882e"
-        resourceGroupName: "RG-Linux-DR"
+        resourceGroupName: "RG-Demo-Trg-Nov25"
         template: ./vnet.json
         deploymentName: VnetDeployment
